@@ -20,8 +20,18 @@ const objects = [
     "the blueprints for a cardboard spaceship", "a digital forest where it only rains binary"
 ];
 
-//pick a random message
-const pickRandomString = arr => {
+//pick a random string
+const pickRandom = arr => {
     return arr[Math.floor(Math.random() * arr.length)];
 };
 
+//generate message
+const generateMessage = (subjects, verbs, objects) => {
+    const subject = pickRandom(subjects);
+    const verb = pickRandom(verbs);
+    const object = pickRandom(objects);
+    const message = `${subject} ${verb} ${object}.`;
+    return message
+};
+
+console.log(generateMessage(subjects, verbs, objects));

@@ -40,70 +40,118 @@ const cyberpunkChaos = {
 
 const fantasyQuests = {
   subjects: [
-    "A socially anxious dragon", "The knight in rusted armor", "A very confused wizard",
-    "The ghost of a gourmet chef", "A sentient pile of gold", "The local village idiot",
-    "A talking squirrel with a sword", "The last remaining unicorn"
+    "A socially anxious dragon", 
+    "The knight in rusted armor", 
+    "A very confused wizard",
+    "The ghost of a gourmet chef", 
+    "A sentient pile of gold", "The local village idiot",
+    "A talking squirrel with a sword", 
+    "The last remaining unicorn"
   ],
   verbs: [
-    "is currently questing for", "accidentally cursed", "tried to challenge",
-    "is hiding from", "begged for mercy from", "stole the legendary map of",
-    "forgot the true meaning of", "hired a mercenary to guard"
+    "is currently questing for", 
+    "accidentally cursed", 
+    "tried to challenge",
+    "is hiding from", 
+    "begged for mercy from", 
+    "stole the legendary map of",
+    "forgot the true meaning of", 
+    "hired a mercenary to guard"
   ],
   objects: [
-    "the bottomless pit of despair", "a very spicy phoenix egg", "the enchanted library of whispers",
-    "a legendary talking shield", "the tavern's secret stash of ale", "a bridge guarded by a grumpy troll",
-    "the forbidden forest of tickling", "a kingdom made entirely of cheese"
+    "the bottomless pit of despair", 
+    "a very spicy phoenix egg", 
+    "the enchanted library of whispers",
+    "a legendary talking shield", 
+    "the tavern's secret stash of ale", 
+    "a bridge guarded by a grumpy troll",
+    "the forbidden forest of tickling", 
+    "a kingdom made entirely of cheese"
   ]
 };
 
 const corporateSatire = {
   subjects: [
-    "The overworked HR manager", "A LinkedIn influencer", "The CEO's pet goldfish",
-    "A broken espresso machine", "The middle-management team", "An unpaid summer intern",
-    "The company's last working printer", "A freelance graphic designer"
+    "The overworked HR manager", 
+    "A LinkedIn influencer",
+    "The CEO's pet goldfish",
+    "A broken espresso machine", 
+    "The middle-management team", 
+    "An unpaid summer intern",
+    "The company's last working printer", 
+    "A freelance graphic designer"
   ],
   verbs: [
-    "scheduled a meeting about", "sent a passive-aggressive email to", "accidentally CC'd the entire office on",
-    "is trying to synergize with", "pivoted the strategy toward", "demanded a status update on",
-    "spent the entire budget on", "is currently ghosting"
+    "scheduled a meeting about", 
+    "sent a passive-aggressive email to",
+    "accidentally CC'd the entire office on",
+    "is trying to synergize with", 
+    "pivoted the strategy toward", 
+    "demanded a status update on",
+    "spent the entire budget on", 
+    "is currently ghosting"
   ],
   objects: [
-    "a stack of unread resumes", "the last slice of communal pizza", "a motivational poster of a cat",
-    "the company’s dwindling stock price", "a spreadsheet with 500 errors", "the yearly performance review",
-    "a virtual happy hour", "the office's only comfortable chair"
+    "a stack of unread resumes", 
+    "the last slice of communal pizza", 
+    "a motivational poster of a cat",
+    "the company’s dwindling stock price", 
+    "a spreadsheet with 500 errors", 
+    "the yearly performance review",
+    "a virtual happy hour", 
+    "the office's only comfortable chair"
   ]
 };
 
 const gourmetDisasters = {
   subjects: [
-    "A five-star celebrity chef", "The microwave in the breakroom", "A rogue food critic",
-    "The local sourdough starter", "An experimental cooking robot", "The owner of a fusion taco truck",
-    "A panicked line cook", "The secret ingredient"
+    "A five-star celebrity chef", 
+    "The microwave in the breakroom", 
+    "A rogue food critic",
+    "The local sourdough starter", 
+    "An experimental cooking robot", 
+    "The owner of a fusion taco truck",
+    "A panicked line cook", 
+    "The secret ingredient"
   ],
   verbs: [
-    "severely over-seasoned", "attempted to flambé", "mistook a brick for",
-    "tried to ferment", "deep-fried a handful of", "refuses to acknowledge the existence of",
-    "discovered a new way to burn", "replaced the salt with"
+    "severely over-seasoned", 
+    "attempted to flambé", 
+    "mistook a brick for",
+    "tried to ferment", 
+    "deep-fried a handful of", 
+    "refuses to acknowledge the existence of",
+    "discovered a new way to burn", 
+    "replaced the salt with"
   ],
   objects: [
-    "a bowl of artisanal cereal", "the world's soggiest sandwich", "a truffle-infused rubber boot",
-    "a cake that looks like a shoe", "the customer's expectation of quality", "a lukewarm cup of decaf",
-    "the secret recipe for instant water", "a mountain of glittery cupcakes"
+    "a bowl of artisanal cereal", 
+    "the world's soggiest sandwich",
+    "a truffle-infused rubber boot",
+    "a cake that looks like a shoe", 
+    "the customer's expectation of quality", 
+    "a lukewarm cup of decaf",
+    "the secret recipe for instant water", 
+    "a mountain of glittery cupcakes"
   ]
 };
 
-//pick a random string
-const pickRandom = arr => {
-    return arr[Math.floor(Math.random() * arr.length)];
+//shortcut for topic
+const message = {
+    cyberpunk: cyberpunkChaos,
+    fantasy: fantasyQuests,
+    corporate: corporateSatire,
+    gourmet: gourmetDisasters
 };
 
 //generate message
-const generateMessage = (subjects, verbs, objects) => {
-    const subject = pickRandom(subjects);
-    const verb = pickRandom(verbs);
-    const object = pickRandom(objects);
-    const message = `${subject} ${verb} ${object}.`;
+const generateMessage = (topic) => {
+    const subject = topic.subjects[Math.floor(Math.random() * topic.subjects.length)];
+    const verb = topic.verbs[Math.floor(Math.random() * topic.verbs.length)];
+    const object = topic.objects[Math.floor(Math.random() * topic.objects.length)];
+    const message = `${subject} ${verb} ${object}.`
+
     return message
 };
 
-console.log(generateMessage(subjects, verbs, objects));
+console.log(generateMessage(message.fantasy));

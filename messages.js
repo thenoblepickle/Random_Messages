@@ -136,7 +136,7 @@ const gourmetDisasters = {
   ]
 };
 
-//shortcut for topic
+//shortcut for theme
 const message = {
     cyberpunk: cyberpunkChaos,
     fantasy: fantasyQuests,
@@ -145,13 +145,30 @@ const message = {
 };
 
 //generate message
-const generateMessage = (topic) => {
-    const subject = topic.subjects[Math.floor(Math.random() * topic.subjects.length)];
-    const verb = topic.verbs[Math.floor(Math.random() * topic.verbs.length)];
-    const object = topic.objects[Math.floor(Math.random() * topic.objects.length)];
+const generateMessage = (theme) => {
+    const subject = theme.subjects[Math.floor(Math.random() * theme.subjects.length)];
+    const verb = theme.verbs[Math.floor(Math.random() * theme.verbs.length)];
+    const object = theme.objects[Math.floor(Math.random() * theme.objects.length)];
     const message = `${subject} ${verb} ${object}.`
 
     return message
 };
 
-console.log(generateMessage(message.fantasy));
+//display the message
+const theme = document.getElementById("theme").value;
+const messageField = document.getElementById("message");
+const messageBtn = document.getElementById("messageButton");
+
+
+const displayMessage = () => {
+  const theme = document.getElementById("theme").value;
+  //console.log(message[theme]);
+
+  messageField.textContent = generateMessage(message[theme]);
+};
+
+messageBtn.addEventListener("click", displayMessage);
+
+
+
+//console.log(generateMessage(message.fantasy));
